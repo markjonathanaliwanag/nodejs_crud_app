@@ -1,0 +1,30 @@
+<% -include ../layouts/header.ejs %>
+
+    <% if(messages.error) { %>
+        <p style="color:red"><% -messages.error %></p>
+    <% } %>
+
+    <% if(messages.success) { %>
+        <p style="color:green"><% -messages.success %></p>
+    <% } %>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Amount</th>
+            <th>Action</th>
+        </tr>
+
+        <% if(data) { %>
+            <% data.forEach(function(user) { %>            
+                <tr>
+                    <td><% =item.name %></td>
+                    <td><% =item.qty %></td>
+                    <td><% =item.amount %></td>                    
+                </tr>
+            <% }) %>
+        <% } %>
+    </table>
+
+<% -include ../layouts/footer.ejs %>
