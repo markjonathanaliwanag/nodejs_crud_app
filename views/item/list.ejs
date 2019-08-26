@@ -1,11 +1,11 @@
-<% -include ../layouts/header.ejs %>
+<%- include ../layouts/header.ejs %>
 
     <% if(messages.error) { %>
-        <p style="color:red"><% -messages.error %></p>
+        <p style="color:red"><%- messages.error %></p>
     <% } %>
 
     <% if(messages.success) { %>
-        <p style="color:green"><% -messages.success %></p>
+        <p style="color:green"><%- messages.success %></p>
     <% } %>
 
     <table>
@@ -17,14 +17,14 @@
         </tr>
 
         <% if(data) { %>
-            <% data.forEach(function(user) { %>            
+            <% data.forEach(function(item) { %>            
                 <tr>
-                    <td><% =item.name %></td>
-                    <td><% =item.qty %></td>
-                    <td><% =item.amount %></td>                    
+                    <td><%= item.name %></td>
+                    <td><%= item.qty %></td>
+                    <td><%= item.amount %></td>                    
                 </tr>
             <% }) %>
         <% } %>
     </table>
 
-<% -include ../layouts/footer.ejs %>
+<%- include ../layouts/footer.ejs %>

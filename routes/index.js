@@ -5,4 +5,4 @@ app.get('/', function(req, res){
     res.render('index', {title: 'NodeJS CRUD App'})
 })
 
-module.exports = app;
+module.exports = app

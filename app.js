@@ -2,7 +2,7 @@ var express = require('express')
 var app = express()
 var mysql = require('mysql')
 var myConnection = require('express-myconnection')
-var config = require('config')
+var config = require('./config')
 
 var dbOptions = {
     host: config.database.host,
@@ -17,10 +17,10 @@ app.set('view engine', 'ejs')
 
 var index = require('./routes/index')
 var items = require('./routes/items')
-var expressValidator = require('express-validator')
-app.use(expressValidator())
+var expressValidator = require('express-validator') 
+// app.use(expressValidator())
 
-var bodeParser = require('body-parser')
+var bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
 
@@ -33,7 +33,7 @@ app.use(methodOverride(function(req, res){
     }
 }))
 
-var flash = require('require-flash')
+var flash = require('express-flash')
 var cookieParser = require('cookie-parser')
 var session = require('express-session')
 app.use(cookieParser('keyboard1'))

@@ -1,10 +1,10 @@
 var config = {
-    database = {
+    database: {
         host: 'localhost',
         user: 'root',
-        password: '1234',
+        password: '',
         port: 3306,
-        db: 'nodejs_crud_db'
+        db: 'nodejs_crudapp_db'        
     },
     server: {
         host: '127.0.0.1',
