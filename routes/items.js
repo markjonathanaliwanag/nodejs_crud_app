@@ -31,23 +31,39 @@ app.get('/', function(req, res, next){
     })
 })
 
+// RENDER VIEW FOR ADD ITEM
+app.get('/add', function(req, res, next){
+    res.render('item/add', {
+        title: 'Add New User',
+        name: '',
+        qty: '',
+        amount: ''
+    })
+})
+
 // INSERT ITEM TO DB
 app.post('/add', function(req, res, next){
-    req.assert('name', 'Name is required').notEmpty()
-    req.assert('qty', 'Quantity is required').notEmpty()
-    req.assert('amount', 'Name is required').notEmpty()
+    
+    // NOT WORKING
+    // res.assert('name', 'Name is required').notEmpty()
+    // res.assert('qty', 'Quantity is required').notEmpty()
+    // res.assert('amount', 'Name is required').notEmpty()
 
-    var errors = req.validationErrors()
+    // var errors = req.getValidationResult()
 
-    if(!errors){
+    // if(!errors){
         var item = {
-            name: req.sanitize('name').escape().trim(),
-            age: req.sanitize('qty').escape().trim(),
-            email: req.sanitize('amount').escape().trim()
+            // name: req.name,
+            // qty: req.qty,
+            // amount: req.amount
+
+            name: req.body.name,
+            qty: req.body.qty,
+            amount: req.body.amount
         }
 
         req.getConnection(function(error, conn){
-            pool.query("INSERT INTO users SET ?", item, function(err, result){
+            pool.query("INSERT INTO items SET ?", item, function(err, result){
                 if(err){
                     req.flash('error', err)
                     res.render('item/add', {
@@ -67,21 +83,21 @@ app.post('/add', function(req, res, next){
                 }
             })
         })
-    } else {
-        var error_msg = ''
-        errors.forEach(function(error){
-            error_msg += error_msg + '<br/>'
-        })
+    // } else {
+    //     var error_msg = ''
+    //     errors.forEach(function(error){
+    //         error_msg += error_msg + '<br/>'
+    //     })
 
-        req.flash('error', error_msg)
+    //     req.flash('error', error_msg)
 
-        res.render('item/add', {
-            title: 'Add New Item',
-            name: req.body.name,
-            qty: req.body.age,
-            amount: req.body.amount,
-        })
-    }
+    //     res.render('item/add', {
+    //         title: 'Add New Item',
+    //         name: req.body.name,
+    //         qty: req.body.age,
+    //         amount: req.body.amount,
+    //     })
+    // }
 })
 
 // GET AN ITEM FOR UPDATE
