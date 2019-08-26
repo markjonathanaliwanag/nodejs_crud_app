@@ -21,7 +21,14 @@
                 <tr>
                     <td><%= item.name %></td>
                     <td><%= item.qty %></td>
-                    <td><%= item.amount %></td>                    
+                    <td><%= item.amount %></td>  
+                    <td>
+                        <a href="/items/edit/<%= item.id %>">Edit</a>
+                        <form action="/items/delete/<%= item.id %>" method="post">
+                            <input type="submit" name="delete" value="Delete" onclick="return confrm('Delete item?')">
+                            <input type="hidden" name="_method" value="DELETE">
+                        </form>
+                    </td>                  
                 </tr>
             <% }) %>
         <% } %>
