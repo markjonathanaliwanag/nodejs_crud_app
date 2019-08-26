@@ -12,7 +12,7 @@ var pool = mysql.createPool({
 })
 
 // GET ITEMS FROM DB
-app.get('/items', function(req, res, next){
+app.get('/', function(req, res, next){
     req.getConnection(function(error, conn){
         pool.query("SELECT * FROM items ORDER by id DESC", function(err, rows, fields){
             if(err){
