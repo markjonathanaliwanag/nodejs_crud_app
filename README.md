@@ -1,4 +1,5 @@
 # NodeJS CRUD App
+
 NodeJS CRUD app with MySQL, Express, and EJS.
 
 # Getting started
@@ -12,6 +13,8 @@ NodeJS CRUD app with MySQL, Express, and EJS.
 
 #### 5. Start "Apache" and "MySQL."
 
-#### 6. On terminal, enter "node app"
+#### 6. On terminal, enter "npm install"
 
-#### 7. Finally, browse on "localhost:3000"
+#### 7. On terminal, enter "node app"
+
+#### 8. Finally, browse on "localhost:3000"
