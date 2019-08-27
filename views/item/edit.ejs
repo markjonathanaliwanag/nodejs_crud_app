@@ -11,20 +11,20 @@
 <form action="/items/edit/<%= id %>" method="post" name="form1">
     <table>
         <tr>
-            <td>Name</td>
+            <td>Name:</td>
             <td><input type="text" name="name" id="name" value="<%= name %>"></td>
         </tr>
         <tr>
-            <td>Quantity</td>
+            <td>Quantity:</td>
             <td><input type="text" name="qty" id="qty" value="<%= qty %>"></td>
         </tr>
         <tr>
-            <td>Amount</td>
+            <td>Amount:</td>
             <td><input type="text" name="amount" id="amount" value="<%= amount %>"></td>
         </tr>
         <tr>
             <td></td>
-            <td><input type="Submit" name="Submit" value="Update"></td>
+            <td><input type="Submit" name="Submit" value="Update" class="btn btn-info"></td>
         </tr>
         <input type="hidden" name="_method" value="PUT">
     </table>

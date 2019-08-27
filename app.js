@@ -4,6 +4,9 @@ var mysql = require('mysql')
 var myConnection = require('express-myconnection')
 var config = require('./config')
 
+app.use('*/css',express.static('public/css'));
+app.use('*/js',express.static('public/js'));
+
 var dbOptions = {
     host: config.database.host,
     user: config.database.user,
@@ -17,8 +20,7 @@ app.set('view engine', 'ejs')
 
 var index = require('./routes/index')
 var items = require('./routes/items')
-var expressValidator = require('express-validator') 
-// app.use(expressValidator)
+
 
 var bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({extended:true}))

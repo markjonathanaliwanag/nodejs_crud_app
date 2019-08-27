@@ -1,37 +1,48 @@
 <%- include ../layouts/header.ejs %>
 
-    <% if(messages.error) { %>
-        <p style="color:red"><%- messages.error %></p>
-    <% } %>
 
-    <% if(messages.success) { %>
-        <p style="color:green"><%- messages.success %></p>
-    <% } %>
+<% if(messages.error) { %>
+<p style="color:red"><%- messages.error %></p>
+<% } %>
 
-    <table>
+<% if(messages.success) { %>
+<p style="color:green"><%- messages.success %></p>
+<% } %>
+
+<table class="table table-md table-striped table-hover table-bordered">
+    <thead class="thead-dark">
         <tr>
-            <th>Name</th>
-            <th>Quantity</th>
-            <th>Amount</th>
-            <th>Action</th>
+            <th scope="col">Name</th>
+            <th scope="col">Quanity</th>
+            <th scope="col">Amount</th>
+            <th style="text-align: center;">Action</th>
         </tr>
-
+    </thead>
+    <tbody>
         <% if(data) { %>
-            <% data.forEach(function(item) { %>            
-                <tr>
-                    <td><%= item.name %></td>
-                    <td><%= item.qty %></td>
-                    <td><%= item.amount %></td>  
-                    <td>
-                        <a href="/items/edit/<%= item.id %>">Edit</a>
-                        <form action="/items/delete/<%= item.id %>" method="post">
-                            <input type="submit" name="delete" value="Delete">
-                            <input type="hidden" name="_method" value="DELETE">
-                        </form>
-                    </td>                  
-                </tr>
-            <% }) %>
+        <% data.forEach(function(item) { %>
+        <tr>
+            <td><%= item.name %></td>
+            <td><%= item.qty %></td>
+            <td><%= item.amount %></td>
+            <td>                
+                <div class="row">
+                    <div class="col">
+                <a class="btn btn-success btn-sm" href="/items/edit/<%= item.id %>" style="float: right;">Edit</a>
+            </div>
+            <div class="col">
+                <form action="/items/delete/<%= item.id %>" method="post">
+                    <input class="btn btn-danger btn-sm" type="submit" name="delete" value="Delete">
+                    <input type="hidden" name="_method" value="DELETE">
+                </form>
+            </div>
+            </div>
+            </td>
+        </tr>
+        <% }) %>
         <% } %>
-    </table>
+    </tbody>
+</table>
+
 
 <%- include ../layouts/footer.ejs %>

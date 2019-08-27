@@ -6,7 +6,7 @@ var pool = mysql.createPool({
     host: 'localhost',
     user: 'root',
     password: '',
-    database: 'nodejs_crudapp_db',
+    database: 'inventory',
     connectionLimit: 10,
     multipleStatements: true
 })
@@ -34,7 +34,7 @@ app.get('/', function(req, res, next){
 // RENDER VIEW FOR ADD ITEM
 app.get('/add', function(req, res, next){
     res.render('item/add', {
-        title: 'Add New User',
+        title: 'Add New Item',
         name: '',
         qty: '',
         amount: ''
