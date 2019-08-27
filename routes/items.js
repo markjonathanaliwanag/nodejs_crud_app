@@ -96,57 +96,35 @@ app.get('/edit/(:id)', function(req, res, next){
 
 // UPDATE AN ITEM
 app.put('/edit/(:id)', function(req, res, next){
-    // req.assert('name', 'Name is required').notEmpty()
-    // req.assert('qty', 'Quantity is required').notEmpty()
-    // req.assert('amount', 'Name is required').notEmpty()
-
-    // var errors = req.validationErrors()
-
-    if(!errors){
-        var item = {
-            name: req.sanitize('name').escape().trim(),
-            age: req.sanitize('qty').escape().trim(),
-            email: req.sanitize('amount').escape().trim()
-        }
-
-        req.getConnection(function(error, conn){
-            pool.query("UPDATE items SET ? WHERE id = " + req.params.id, item, function(err, result){
-                if(err){
-                    req.flash('error', err)
-                    res.render('item/edit', {
-                        title: 'Edit Item',
-                        id: req.params.id,
-                        name: req.params.name,    
-                        qty: req.params.qty,
-                        amount: req.params.amount,
-                    })
-                } else {
-                    req.flash('success', 'Item Updated Successfully!')
-                    res.render('item/edit', {
-                        title: 'Edit Item',
-                        id: req.params.id,
-                        name: req.params.name,    
-                        qty: req.params.qty,
-                        amount: req.params.amount,
-                    })
-                }
-            })
-        })
-    } else {
-        var error_msg = ''
-        errors.forEach(function(error){
-            error_msg += error_msg + '<br/>'
-        })
-
-        req.flash('error', error_msg)
-
-        res.render('item/edit', {
-            title: 'Edit Item',
-            name: req.body.name,
-            qty: req.body.age,
-            amount: req.body.amount,
-        })
+    var item = {
+        name: req.body.name,
+        qty: req.body.qty,
+        amount: req.body.amount
     }
+
+    req.getConnection(function(error, conn){
+        pool.query("UPDATE items SET ? WHERE id = " + req.params.id, item, function(err, result){
+            if(err){
+                req.flash('error', err)
+                res.render('item/edit', {
+                    title: 'Edit Item',
+                    id: req.params.id,
+                    name: req.params.name,
+                    qty: req.params.qty,
+                    amount: req.params.amount,
+                })
+            } else {
+                req.flash('success', 'Item Updated Successfully!')
+                res.render('item/edit', {
+                    title: 'Edit Item',
+                    id: req.params.id,
+                    name: req.params.name,
+                    qty: req.params.qty,
+                    amount: req.params.amount,
+                })
+            }
+        })
+    })    
 })
 
 // DELETE AN ITEM
