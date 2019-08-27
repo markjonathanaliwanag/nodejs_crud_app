@@ -43,20 +43,7 @@ app.get('/add', function(req, res, next){
 
 // INSERT ITEM TO DB
 app.post('/add', function(req, res, next){
-    
-    // NOT WORKING
-    // res.assert('name', 'Name is required').notEmpty()
-    // res.assert('qty', 'Quantity is required').notEmpty()
-    // res.assert('amount', 'Name is required').notEmpty()
-
-    // var errors = req.getValidationResult()
-
-    // if(!errors){
         var item = {
-            // name: req.name,
-            // qty: req.qty,
-            // amount: req.amount
-
             name: req.body.name,
             qty: req.body.qty,
             amount: req.body.amount
@@ -82,22 +69,7 @@ app.post('/add', function(req, res, next){
                     })
                 }
             })
-        })
-    // } else {
-    //     var error_msg = ''
-    //     errors.forEach(function(error){
-    //         error_msg += error_msg + '<br/>'
-    //     })
-
-    //     req.flash('error', error_msg)
-
-    //     res.render('item/add', {
-    //         title: 'Add New Item',
-    //         name: req.body.name,
-    //         qty: req.body.age,
-    //         amount: req.body.amount,
-    //     })
-    // }
+        })    
 })
 
 // GET AN ITEM FOR UPDATE
@@ -113,9 +85,9 @@ app.get('/edit/(:id)', function(req, res, next){
                 res.render('item/edit', {
                     title: 'Edit Item',
                     id: rows[0].id,
-                    name: rows[1].name,
-                    qty: rows[2].qty,
-                    amount: rows[3].amount
+                    name: rows[0].name,
+                    qty: rows[0].qty,
+                    amount: rows[0].amount,
                 })
             }
         })
@@ -124,11 +96,11 @@ app.get('/edit/(:id)', function(req, res, next){
 
 // UPDATE AN ITEM
 app.put('/edit/(:id)', function(req, res, next){
-    req.assert('name', 'Name is required').notEmpty()
-    req.assert('qty', 'Quantity is required').notEmpty()
-    req.assert('amount', 'Name is required').notEmpty()
+    // req.assert('name', 'Name is required').notEmpty()
+    // req.assert('qty', 'Quantity is required').notEmpty()
+    // req.assert('amount', 'Name is required').notEmpty()
 
-    var errors = req.validationErrors()
+    // var errors = req.validationErrors()
 
     if(!errors){
         var item = {
