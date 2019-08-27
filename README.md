@@ -8,8 +8,10 @@ NodeJS CRUD app with MySQL, Express, and EJS.
 
 #### 3. Edit database information at "config.js" and "routes/items.js"
 
-#### 4. For the server, install and run XAMPP. Start "Apache" and "MySQL."
+#### 4. For the server, install and run XAMPP. 
 
-#### 5. On terminal, enter "node app"
+#### 5. Start "Apache" and "MySQL."
 
-#### 6. Finally, browse on "localhost:3000"
+#### 6. On terminal, enter "node app"
+
+#### 7. Finally, browse on "localhost:3000"
